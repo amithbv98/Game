@@ -1,5 +1,7 @@
 import entity
 class gameState():
+    left_score = 0
+    right_score = 0
     def __init__(self, paddle_width, paddle_height, ball_radius, window_length, window_width):
         self.paddle1 = entity.paddle([paddle_width, paddle_height], [0,0], (0, window_width//2 - paddle_height//2))
         self.paddle2 = entity.paddle([paddle_width, paddle_height], [0,0], [window_length - paddle_width, window_width//2 - paddle_height//2])
@@ -64,6 +66,12 @@ class gameState():
         
     def getWindowParams(self):
         return self.window_length, self.window_width
+       
+    def getScore(self):
+        return self.left_score, self.right_score
+        
+    def setScore(self, score):
+        self.left_score, self.right_score = score
     
     
     

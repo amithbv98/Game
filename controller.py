@@ -32,6 +32,7 @@ class eventHandler:
         ball_x, ball_y = self.model.getBallPosition()
         ballv_x, ballv_y = self.model.getBallVelocity()
         radius = self.model.getBallRadius()
+        left_score, right_score = self.model.getScore()
         paddlewidth, paddleheight = self.model.getPaddle1Dimension()
         if (p1top != 0 and p1velY < 0):
             self.model.setPaddle1Position((p1left, p1top+p1velY))
@@ -49,12 +50,14 @@ class eventHandler:
         if ball_x <= radius + paddlewidth and ball_y in range(p1top,p1top+paddleheight,1):
             self.model.setBallVelocity((-ballv_x, ballv_y))
         elif ball_x <= radius + paddlewidth:
-            self.model.__init__(8, 80, 20, 600, 400)
+            self.model.setScore((left_score, right_score+1))
+            self.model.__init__(8, 80, 20, 600, 480)
         
         if ball_x >= winlength  - radius - paddlewidth and ball_y in range(p2top,p2top + paddleheight,1):
             self.model.setBallVelocity((-ballv_x, ballv_y))
         elif ball_x >= winlength - radius - paddlewidth:
-            self.model.__init__(8, 80, 20, 600, 400)
+            self.model.setScore((left_score+1, right_score))
+            self.model.__init__(8, 80, 20, 600, 480)
         newball_x, newball_y = self.model.getBallPosition()
         newballv_x, newballv_y = self.model.getBallVelocity()
         self.model.setBallPosition((newball_x+newballv_x, newball_y+newballv_y))
