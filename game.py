@@ -2,7 +2,7 @@ import pygame, model, view, controller, sys
 
 class pong:
 	def __init__(self):
-		self.model = model.gameState(8, 80, 20, 600, 480)
+		self.model = model.gameState(8, 100, 20, 600, 480)
 		self.controller = controller.eventHandler(self.model)
 		self.view = view.gameView(self.model)
 		self.fps = pygame.time.Clock()
